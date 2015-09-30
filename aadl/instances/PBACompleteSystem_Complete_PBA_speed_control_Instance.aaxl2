@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" xmi:id="_tKJO8EbhEeWdR5K2OIZ9aA" name="Complete_PBA_speed_control_Instance" category="system">
+  <componentInstance xmi:id="_tKUOEEbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus" srcConnectionInstance="_tLR3YEbhEeWdR5K2OIZ9aA _tLSecEbhEeWdR5K2OIZ9aA _tLTFgUbhEeWdR5K2OIZ9aA _tLTskEbhEeWdR5K2OIZ9aA _tLTskkbhEeWdR5K2OIZ9aA" category="bus">
+    <subcomponent xsi:type="aadl2:BusSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.Standard_Marine_Bus"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKa7wEbhEeWdR5K2OIZ9aA" name="speed_sensor" category="device">
+    <featureInstance xmi:id="_tKhpcEbhEeWdR5K2OIZ9aA" name="sensor_data" srcConnectionInstance="_tLWv4EbhEeWdR5K2OIZ9aA _tLXW8EbhEeWdR5K2OIZ9aA" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::sensor.sensor_data"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tKhpcUbhEeWdR5K2OIZ9aA" name="BA1" dstConnectionInstance="_tLR3YEbhEeWdR5K2OIZ9aA" category="busAccess" direction="in out">
+      <feature xsi:type="aadl2:BusAccess" href="../PBAComponentType.aadl#PBAComponents::sensor.BA1"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.speed_sensor"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKiQgEbhEeWdR5K2OIZ9aA" name="throttle" category="device">
+    <featureInstance xmi:id="_tKi3kEbhEeWdR5K2OIZ9aA" name="cmd" dstConnectionInstance="_tLboYEbhEeWdR5K2OIZ9aA" srcFlowSpec="_tKlT0EbhEeWdR5K2OIZ9aA">
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::actuator.cmd"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tKi3kUbhEeWdR5K2OIZ9aA" name="BA1" dstConnectionInstance="_tLTFgUbhEeWdR5K2OIZ9aA" category="busAccess" direction="in out">
+      <feature xsi:type="aadl2:BusAccess" href="../PBAComponentType.aadl#PBAComponents::actuator.BA1"/>
+    </featureInstance>
+    <flowSpecification xmi:id="_tKlT0EbhEeWdR5K2OIZ9aA" name="on_flow_snk" source="_tKi3kEbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMRV4EbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties::Latency"/>
+        <ownedValue xmi:id="_tMR88EbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMR88UbhEeWdR5K2OIZ9aA">
+            <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMR88kbhEeWdR5K2OIZ9aA" value="8">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMR880bhEeWdR5K2OIZ9aA" value="8">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../PBAComponentType.aadl#PBAComponents::actuator.on_flow_snk"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.throttle"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKmh8EbhEeWdR5K2OIZ9aA" name="interface_unit" category="device">
+    <featureInstance xmi:id="_tKnJAEbhEeWdR5K2OIZ9aA" name="set_speed" srcConnectionInstance="_tLYlEEbhEeWdR5K2OIZ9aA" dstFlowSpec="_tKnwEEbhEeWdR5K2OIZ9aA" direction="out">
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::interface.set_speed"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tKnJAUbhEeWdR5K2OIZ9aA" name="disengage" srcConnectionInstance="_tLZMIEbhEeWdR5K2OIZ9aA" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../PBAComponentType.aadl#PBAComponents::interface.disengage"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tKnJAkbhEeWdR5K2OIZ9aA" name="control_on" srcConnectionInstance="_tLZzMEbhEeWdR5K2OIZ9aA" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../PBAComponentType.aadl#PBAComponents::interface.control_on"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tKnJA0bhEeWdR5K2OIZ9aA" name="BA1" dstConnectionInstance="_tLTskEbhEeWdR5K2OIZ9aA" category="busAccess" direction="in out">
+      <feature xsi:type="aadl2:BusAccess" href="../PBAComponentType.aadl#PBAComponents::interface.BA1"/>
+    </featureInstance>
+    <flowSpecification xmi:id="_tKnwEEbhEeWdR5K2OIZ9aA" name="on_flow_src" destination="_tKnJAEbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMUZMEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties::Latency"/>
+        <ownedValue xmi:id="_tMUZMUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMUZMkbhEeWdR5K2OIZ9aA">
+            <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMUZM0bhEeWdR5K2OIZ9aA" value="5">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMUZNEbhEeWdR5K2OIZ9aA" value="5">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../PBAComponentType.aadl#PBAComponents::interface.on_flow_src"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.interface_unit"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKnwEUbhEeWdR5K2OIZ9aA" name="display_unit" category="device">
+    <featureInstance xmi:id="_tKoXIEbhEeWdR5K2OIZ9aA" name="status" dstConnectionInstance="_tLcPcEbhEeWdR5K2OIZ9aA _tLc2gEbhEeWdR5K2OIZ9aA">
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::display_unit.status"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:DeviceSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.display_unit"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKoXIUbhEeWdR5K2OIZ9aA" name="Stand_Memory" category="memory">
+    <featureInstance xmi:id="_tKo-MEbhEeWdR5K2OIZ9aA" name="BA1" dstConnectionInstance="_tLTskkbhEeWdR5K2OIZ9aA" category="busAccess" direction="in out">
+      <feature xsi:type="aadl2:BusAccess" href="../PBAHardware.aadl#PBAHardware::RAM.BA1"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:MemorySubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.Stand_Memory"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tKplQEbhEeWdR5K2OIZ9aA" name="speed_control" category="process">
+    <ownedPropertyAssociation xmi:id="_tMWOYEbhEeWdR5K2OIZ9aA">
+      <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+      <ownedValue xmi:id="_tMWOYUbhEeWdR5K2OIZ9aA">
+        <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMW1cEbhEeWdR5K2OIZ9aA">
+          <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMW1cUbhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xmi:id="_tMW1ckbhEeWdR5K2OIZ9aA">
+      <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+      <ownedValue xmi:id="_tMW1c0bhEeWdR5K2OIZ9aA">
+        <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMW1dEbhEeWdR5K2OIZ9aA" value="50">
+          <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <featureInstance xmi:id="_tK-8ckbhEeWdR5K2OIZ9aA" name="command_data" dstFlowSpec="_tK_jgEbhEeWdR5K2OIZ9aA" direction="out">
+      <ownedPropertyAssociation xmi:id="_tMXcgEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMXcgUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMXcgkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMXcg0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::control.command_data"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tK-8c0bhEeWdR5K2OIZ9aA" name="sensor_data">
+      <ownedPropertyAssociation xmi:id="_tMYDkEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMYDkUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMYDkkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMYDk0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::control.sensor_data"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tK-8dEbhEeWdR5K2OIZ9aA" name="set_speed" srcFlowSpec="_tK_jgEbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMYDlEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMYDlUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMYDlkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMYDl0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::control.set_speed"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tK-8dUbhEeWdR5K2OIZ9aA" name="status" direction="out">
+      <ownedPropertyAssociation xmi:id="_tMYqoEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMYqoUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMYqokbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMYqo0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::control.status"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tK-8dkbhEeWdR5K2OIZ9aA" name="disengage" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../PBAComponentType.aadl#PBAComponents::control.disengage"/>
+    </featureInstance>
+    <featureInstance xmi:id="_tK-8d0bhEeWdR5K2OIZ9aA" name="control_on" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../PBAComponentType.aadl#PBAComponents::control.control_on"/>
+    </featureInstance>
+    <componentInstance xmi:id="_tKsokUbhEeWdR5K2OIZ9aA" name="scale_speed_data" category="thread" inMode="_tKqzYUbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMYqpEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Allowed_Processor_Binding"/>
+        <ownedValue xmi:id="_tMZRsEbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMZRsUbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMZRskbhEeWdR5K2OIZ9aA" referencedInstanceObject="_tK_jgUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMZRs0bhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMZRtEbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMZRtUbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMZRtkbhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMZ4wEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+        <ownedValue xmi:id="_tMZ4wUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMZ4wkbhEeWdR5K2OIZ9aA" value="50">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMZ4w0bhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Thread_Properties.aadl#Thread_Properties::Dispatch_Protocol"/>
+        <ownedValue xmi:id="_tMZ4xEbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:NamedValue" xmi:id="_tMZ4xUbhEeWdR5K2OIZ9aA">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Supported_Dispatch_Protocols.Periodic"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMZ4xkbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Compute_Execution_Time"/>
+        <ownedValue xmi:id="_tMaf0EbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMaf0UbhEeWdR5K2OIZ9aA">
+            <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMaf0kbhEeWdR5K2OIZ9aA" value="3">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMaf00bhEeWdR5K2OIZ9aA" value="5">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <featureInstance xmi:id="_tK8gMEbhEeWdR5K2OIZ9aA" name="sensor_data" dstConnectionInstance="_tLWv4EbhEeWdR5K2OIZ9aA">
+        <ownedPropertyAssociation xmi:id="_tMaf1EbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMaf1UbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMaf1kbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMaf10bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::read_data.sensor_data"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK8gMUbhEeWdR5K2OIZ9aA" name="proc_data" srcConnectionInstance="_tLbBUEbhEeWdR5K2OIZ9aA" direction="out">
+        <ownedPropertyAssociation xmi:id="_tMbG4EbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMbG4UbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMbG4kbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMbG40bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::read_data.proc_data"/>
+      </featureInstance>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../PBAComponentType.aadl#PBAComponents::control.speed.scale_speed_data"/>
+      <index>0</index>
+    </componentInstance>
+    <componentInstance xmi:id="_tK8gMkbhEeWdR5K2OIZ9aA" name="speed_control_laws" category="thread" inMode="_tKqzYUbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMbt8EbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Allowed_Processor_Binding"/>
+        <ownedValue xmi:id="_tMbt8UbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMbt8kbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMbt80bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tK_jgUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMbt9EbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMbt9UbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMbt9kbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMbt90bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMcVAEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+        <ownedValue xmi:id="_tMcVAUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMcVAkbhEeWdR5K2OIZ9aA" value="50">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMcVA0bhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Thread_Properties.aadl#Thread_Properties::Dispatch_Protocol"/>
+        <ownedValue xmi:id="_tMcVBEbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:NamedValue" xmi:id="_tMcVBUbhEeWdR5K2OIZ9aA">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Supported_Dispatch_Protocols.Periodic"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMc8EEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Compute_Execution_Time"/>
+        <ownedValue xmi:id="_tMc8EUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMc8EkbhEeWdR5K2OIZ9aA">
+            <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMc8E0bhEeWdR5K2OIZ9aA" value="1">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMc8FEbhEeWdR5K2OIZ9aA" value="2">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <featureInstance xmi:id="_tK9uUEbhEeWdR5K2OIZ9aA" name="proc_data" dstConnectionInstance="_tLbBUEbhEeWdR5K2OIZ9aA">
+        <ownedPropertyAssociation xmi:id="_tMc8FUbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMdjIEbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMdjIUbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMdjIkbhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.proc_data"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK9uUUbhEeWdR5K2OIZ9aA" name="cmd" srcConnectionInstance="_tLboYEbhEeWdR5K2OIZ9aA" dstFlowSpec="_tK-VYEbhEeWdR5K2OIZ9aA" direction="out">
+        <ownedPropertyAssociation xmi:id="_tMdjI0bhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMdjJEbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMdjJUbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMdjJkbhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.cmd"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK9uUkbhEeWdR5K2OIZ9aA" name="set_speed" dstConnectionInstance="_tLYlEEbhEeWdR5K2OIZ9aA" srcFlowSpec="_tK-VYEbhEeWdR5K2OIZ9aA">
+        <ownedPropertyAssociation xmi:id="_tMeKMEbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMeKMUbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMeKMkbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMeKM0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.set_speed"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK9uU0bhEeWdR5K2OIZ9aA" name="status" srcConnectionInstance="_tLcPcEbhEeWdR5K2OIZ9aA" direction="out">
+        <ownedPropertyAssociation xmi:id="_tMexQEbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMexQUbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMexQkbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMexQ0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.status"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK9uVEbhEeWdR5K2OIZ9aA" name="disengage" dstConnectionInstance="_tLZMIEbhEeWdR5K2OIZ9aA" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.disengage"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK9uVUbhEeWdR5K2OIZ9aA" name="control_on" dstConnectionInstance="_tLZzMEbhEeWdR5K2OIZ9aA" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.control_on"/>
+      </featureInstance>
+      <flowSpecification xmi:id="_tK-VYEbhEeWdR5K2OIZ9aA" name="on_flow_path" source="_tK9uUkbhEeWdR5K2OIZ9aA" destination="_tK9uUUbhEeWdR5K2OIZ9aA">
+        <ownedPropertyAssociation xmi:id="_tMexREbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties::Latency"/>
+          <ownedValue xmi:id="_tMexRUbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMexRkbhEeWdR5K2OIZ9aA">
+              <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMexR0bhEeWdR5K2OIZ9aA" value="10">
+                <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+              </minimum>
+              <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMexSEbhEeWdR5K2OIZ9aA" value="20">
+                <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+              </maximum>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <flowSpecification href="../PBAControlSpeed.aadl#PBASpeedControl::Control_laws.on_flow_path"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../PBAComponentType.aadl#PBAComponents::control.speed.speed_control_laws"/>
+      <index>0</index>
+    </componentInstance>
+    <componentInstance xmi:id="_tK-VYUbhEeWdR5K2OIZ9aA" name="monitor" category="thread" inMode="_tKqzYEbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMfYUEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMfYUUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMfYUkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMfYU0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMfYVEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+        <ownedValue xmi:id="_tMfYVUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMfYVkbhEeWdR5K2OIZ9aA" value="50">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <featureInstance xmi:id="_tK-8cEbhEeWdR5K2OIZ9aA" name="sensor_data" dstConnectionInstance="_tLXW8EbhEeWdR5K2OIZ9aA">
+        <ownedPropertyAssociation xmi:id="_tMf_YEbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMf_YUbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMf_YkbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMf_Y0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::monitor_unit.sensor_data"/>
+      </featureInstance>
+      <featureInstance xmi:id="_tK-8cUbhEeWdR5K2OIZ9aA" name="status" srcConnectionInstance="_tLc2gEbhEeWdR5K2OIZ9aA" direction="out">
+        <ownedPropertyAssociation xmi:id="_tMgmcEbhEeWdR5K2OIZ9aA">
+          <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+          <ownedValue xmi:id="_tMgmcUbhEeWdR5K2OIZ9aA">
+            <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMgmckbhEeWdR5K2OIZ9aA">
+              <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMgmc0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+            </ownedValue>
+          </ownedValue>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../PBAComponentType.aadl#PBAComponents::monitor_unit.status"/>
+      </featureInstance>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../PBAComponentType.aadl#PBAComponents::control.speed.monitor"/>
+      <index>0</index>
+    </componentInstance>
+    <modeInstance xmi:id="_tKqzYEbhEeWdR5K2OIZ9aA" name="monitoring" srcModeTransition="_tKsBgEbhEeWdR5K2OIZ9aA" dstModeTransition="_tKsokEbhEeWdR5K2OIZ9aA" initial="true">
+      <mode href="../PBAComponentType.aadl#PBAComponents::control.speed.monitoring"/>
+    </modeInstance>
+    <modeInstance xmi:id="_tKqzYUbhEeWdR5K2OIZ9aA" name="controlling" srcModeTransition="_tKsokEbhEeWdR5K2OIZ9aA" dstModeTransition="_tKsBgEbhEeWdR5K2OIZ9aA">
+      <mode href="../PBAComponentType.aadl#PBAComponents::control.speed.controlling"/>
+    </modeInstance>
+    <modeTransitionInstance xmi:id="_tKsBgEbhEeWdR5K2OIZ9aA" name="monitoring.control_on.controlling" destination="_tKqzYUbhEeWdR5K2OIZ9aA" source="_tKqzYEbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMhNgEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMhNgUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMhNgkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMhNg0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMhNhEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+        <ownedValue xmi:id="_tMhNhUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMhNhkbhEeWdR5K2OIZ9aA" value="50">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <modeTransition href="../PBAComponentType.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.0"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance xmi:id="_tKsokEbhEeWdR5K2OIZ9aA" name="controlling.disengage.monitoring" destination="_tKqzYEbhEeWdR5K2OIZ9aA" source="_tKqzYUbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMh0kEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Deployment_Properties.aadl#Deployment_Properties::Actual_Memory_Binding"/>
+        <ownedValue xmi:id="_tMh0kUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:ListValue" xmi:id="_tMh0kkbhEeWdR5K2OIZ9aA">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" xmi:id="_tMh0k0bhEeWdR5K2OIZ9aA" referencedInstanceObject="_tKoXIUbhEeWdR5K2OIZ9aA"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xmi:id="_tMh0lEbhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Timing_Properties.aadl#Timing_Properties::Period"/>
+        <ownedValue xmi:id="_tMh0lUbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:IntegerLiteral" xmi:id="_tMh0lkbhEeWdR5K2OIZ9aA" value="50">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <modeTransition href="../PBAComponentType.aadl#//@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.1"/>
+    </modeTransitionInstance>
+    <flowSpecification xmi:id="_tK_jgEbhEeWdR5K2OIZ9aA" name="on_flow_path" source="_tK-8dEbhEeWdR5K2OIZ9aA" destination="_tK-8ckbhEeWdR5K2OIZ9aA">
+      <ownedPropertyAssociation xmi:id="_tMh0l0bhEeWdR5K2OIZ9aA">
+        <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties::Latency"/>
+        <ownedValue xmi:id="_tMh0mEbhEeWdR5K2OIZ9aA">
+          <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMh0mUbhEeWdR5K2OIZ9aA">
+            <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMh0mkbhEeWdR5K2OIZ9aA" value="10">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMh0m0bhEeWdR5K2OIZ9aA" value="20">
+              <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+      </ownedPropertyAssociation>
+      <flowSpecification href="../PBAComponentType.aadl#PBAComponents::control.on_flow_path"/>
+    </flowSpecification>
+    <connectionInstance xmi:id="_tLbBUEbhEeWdR5K2OIZ9aA" name="scale_speed_data.proc_data -> speed_control_laws.proc_data" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK9uUEbhEeWdR5K2OIZ9aA" source="_tK8gMUbhEeWdR5K2OIZ9aA">
+      <connectionReference xmi:id="_tLbBUUbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK8gMUbhEeWdR5K2OIZ9aA" destination="_tK9uUEbhEeWdR5K2OIZ9aA">
+        <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC2"/>
+      </connectionReference>
+    </connectionInstance>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.speed_control"/>
+    <index>0</index>
+  </componentInstance>
+  <componentInstance xmi:id="_tK_jgUbhEeWdR5K2OIZ9aA" name="RT_1GHZ" category="processor">
+    <ownedPropertyAssociation xmi:id="_tMjCsEbhEeWdR5K2OIZ9aA">
+      <property href="../../../Plugin_Resources/SEI.aadl#SEI::MIPSCapacity"/>
+      <ownedValue xmi:id="_tMjpwEbhEeWdR5K2OIZ9aA">
+        <ownedValue xsi:type="aadl2:RealLiteral" xmi:id="_tMjpwUbhEeWdR5K2OIZ9aA" value="1.0">
+          <unit href="../../../Plugin_Resources/SEI.aadl#SEI::Processor_Speed_Units.GIPS"/>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <featureInstance xmi:id="_tLAKkEbhEeWdR5K2OIZ9aA" name="BA1" dstConnectionInstance="_tLSecEbhEeWdR5K2OIZ9aA" category="busAccess" direction="in out">
+      <feature xsi:type="aadl2:BusAccess" href="../PBAHardware.aadl#PBAHardware::Real_Time.BA1"/>
+    </featureInstance>
+    <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.RT_1GHZ"/>
+    <index>0</index>
+  </componentInstance>
+  <endToEndFlow xmi:id="_tLgg4EbhEeWdR5K2OIZ9aA" name="on_end_to_end" flowElement="_tKnwEEbhEeWdR5K2OIZ9aA _tLYlEEbhEeWdR5K2OIZ9aA _tK_jgEbhEeWdR5K2OIZ9aA _tLboYEbhEeWdR5K2OIZ9aA _tKlT0EbhEeWdR5K2OIZ9aA" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA">
+    <ownedPropertyAssociation xmi:id="_tMjpwkbhEeWdR5K2OIZ9aA">
+      <property href="../../../Plugin_Resources/Communication_Properties.aadl#Communication_Properties::Latency"/>
+      <ownedValue xmi:id="_tMjpw0bhEeWdR5K2OIZ9aA">
+        <ownedValue xsi:type="aadl2:RangeValue" xmi:id="_tMjpxEbhEeWdR5K2OIZ9aA">
+          <minimum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMjpxUbhEeWdR5K2OIZ9aA" value="35">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" xmi:id="_tMjpxkbhEeWdR5K2OIZ9aA" value="35">
+            <unit href="../../../Plugin_Resources/AADL_Project.aadl#AADL_Project::Time_Units.ms"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+    </ownedPropertyAssociation>
+    <endToEndFlow href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.on_end_to_end"/>
+  </endToEndFlow>
+  <connectionInstance xmi:id="_tLR3YEbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus -> speed_sensor.BA1" complete="true" kind="accessConnection" destination="_tKhpcUbhEeWdR5K2OIZ9aA" bidirectional="true" source="_tKUOEEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLR3YUbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKUOEEbhEeWdR5K2OIZ9aA" destination="_tKhpcUbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:AccessConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.BAC1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLSecEbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus -> RT_1GHZ.BA1" complete="true" kind="accessConnection" destination="_tLAKkEbhEeWdR5K2OIZ9aA" bidirectional="true" source="_tKUOEEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLTFgEbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKUOEEbhEeWdR5K2OIZ9aA" destination="_tLAKkEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:AccessConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.BAC2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLTFgUbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus -> throttle.BA1" complete="true" kind="accessConnection" destination="_tKi3kUbhEeWdR5K2OIZ9aA" bidirectional="true" source="_tKUOEEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLTFgkbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKUOEEbhEeWdR5K2OIZ9aA" destination="_tKi3kUbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:AccessConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.BAC3"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLTskEbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus -> interface_unit.BA1" complete="true" kind="accessConnection" destination="_tKnJA0bhEeWdR5K2OIZ9aA" bidirectional="true" source="_tKUOEEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLTskUbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKUOEEbhEeWdR5K2OIZ9aA" destination="_tKnJA0bhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:AccessConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.BAC4"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLTskkbhEeWdR5K2OIZ9aA" name="Standard_Marine_Bus -> Stand_Memory.BA1" complete="true" kind="accessConnection" destination="_tKo-MEbhEeWdR5K2OIZ9aA" bidirectional="true" source="_tKUOEEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLTsk0bhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKUOEEbhEeWdR5K2OIZ9aA" destination="_tKo-MEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:AccessConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.BAC5"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLWv4EbhEeWdR5K2OIZ9aA" name="speed_sensor.sensor_data -> speed_control.scale_speed_data.sensor_data" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK8gMEbhEeWdR5K2OIZ9aA" source="_tKhpcEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLWv4UbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKhpcEbhEeWdR5K2OIZ9aA" destination="_tK-8c0bhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC1"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLWv4kbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8c0bhEeWdR5K2OIZ9aA" destination="_tK8gMEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLXW8EbhEeWdR5K2OIZ9aA" name="speed_sensor.sensor_data -> speed_control.monitor.sensor_data" inSystemOperationMode="_tLJUgEbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK-8cEbhEeWdR5K2OIZ9aA" source="_tKhpcEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLXW8UbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKhpcEbhEeWdR5K2OIZ9aA" destination="_tK-8c0bhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC1"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLXW8kbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8c0bhEeWdR5K2OIZ9aA" destination="_tK-8cEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC6"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLYlEEbhEeWdR5K2OIZ9aA" name="interface_unit.set_speed -> speed_control.speed_control_laws.set_speed" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK9uUkbhEeWdR5K2OIZ9aA" source="_tKnJAEbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLYlEUbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKnJAEbhEeWdR5K2OIZ9aA" destination="_tK-8dEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC3"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLYlEkbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8dEbhEeWdR5K2OIZ9aA" destination="_tK9uUkbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC4"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLZMIEbhEeWdR5K2OIZ9aA" name="interface_unit.disengage -> speed_control.speed_control_laws.disengage" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK9uVEbhEeWdR5K2OIZ9aA" source="_tKnJAUbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLZMIUbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKnJAUbhEeWdR5K2OIZ9aA" destination="_tK-8dkbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.EC4"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLZMIkbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8dkbhEeWdR5K2OIZ9aA" destination="_tK9uVEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.EC1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLZzMEbhEeWdR5K2OIZ9aA" name="interface_unit.control_on -> speed_control.speed_control_laws.control_on" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tK9uVUbhEeWdR5K2OIZ9aA" source="_tKnJAkbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLZzMUbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tKnJAkbhEeWdR5K2OIZ9aA" destination="_tK-8d0bhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.EC5"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLZzMkbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8d0bhEeWdR5K2OIZ9aA" destination="_tK9uVUbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.EC2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLboYEbhEeWdR5K2OIZ9aA" name="speed_control.speed_control_laws.cmd -> throttle.cmd" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tKi3kEbhEeWdR5K2OIZ9aA" source="_tK9uUUbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLboYUbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK9uUUbhEeWdR5K2OIZ9aA" destination="_tK-8ckbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC3"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLboYkbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tK-8ckbhEeWdR5K2OIZ9aA" destination="_tKi3kEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC2"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLcPcEbhEeWdR5K2OIZ9aA" name="speed_control.speed_control_laws.status -> display_unit.status" inSystemOperationMode="_tLJUgUbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tKoXIEbhEeWdR5K2OIZ9aA" source="_tK9uU0bhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLcPcUbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK9uU0bhEeWdR5K2OIZ9aA" destination="_tK-8dUbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC8"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLcPckbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tK-8dUbhEeWdR5K2OIZ9aA" destination="_tKoXIEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC4"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance xmi:id="_tLc2gEbhEeWdR5K2OIZ9aA" name="speed_control.monitor.status -> display_unit.status" inSystemOperationMode="_tLJUgEbhEeWdR5K2OIZ9aA" complete="true" kind="portConnection" destination="_tKoXIEbhEeWdR5K2OIZ9aA" source="_tK-8cUbhEeWdR5K2OIZ9aA">
+    <connectionReference xmi:id="_tLc2gUbhEeWdR5K2OIZ9aA" context="_tKplQEbhEeWdR5K2OIZ9aA" source="_tK-8cUbhEeWdR5K2OIZ9aA" destination="_tK-8dUbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBAComponentType.aadl#PBAComponents::control.speed.DC5"/>
+    </connectionReference>
+    <connectionReference xmi:id="_tLc2gkbhEeWdR5K2OIZ9aA" context="_tKJO8EbhEeWdR5K2OIZ9aA" source="_tK-8dUbhEeWdR5K2OIZ9aA" destination="_tKoXIEbhEeWdR5K2OIZ9aA">
+      <connection xsi:type="aadl2:PortConnection" href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control.DC4"/>
+    </connectionReference>
+  </connectionInstance>
+  <systemOperationMode xmi:id="_tLJUgEbhEeWdR5K2OIZ9aA" name="speed_control.monitoring" currentMode="_tKqzYEbhEeWdR5K2OIZ9aA"/>
+  <systemOperationMode xmi:id="_tLJUgUbhEeWdR5K2OIZ9aA" name="speed_control.controlling" currentMode="_tKqzYUbhEeWdR5K2OIZ9aA"/>
+  <systemImplementation href="../PBACompleteSystem.aadl#PBAcomplete::Complete.PBA_speed_control"/>
+</instance:SystemInstance>

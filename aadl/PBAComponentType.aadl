@@ -1,0 +1,102 @@
+--基础组件定义
+package PBAComponents
+
+public with PBASpeedControl,PBAHardware;
+
+--传感器
+device sensor
+	features
+		sensor_data : out data port;
+		BA1:requires bus access PBAHardware::Marine.Standard;
+end sensor;
+
+device implementation sensor.speed
+end sensor.speed;
+
+--整个系统与外部的接口
+device interface
+	features
+		set_speed : out data port;
+		disengage :out event port;
+		BA1:requires bus access PBAHardware::Marine.Standard;
+		control_on :out event port;
+	flows
+		on_flow_src : flow source set_speed {latency => 5 ms .. 5 ms;};
+end interface;
+
+device implementation interface.pilot
+end interface.pilot;
+
+device display_unit
+	features
+		status: in data port;
+end display_unit;
+
+
+
+
+thread monitor_unit
+	features
+		sensor_data : in data port;
+		status :out data port;
+end monitor_unit;
+
+
+--控制进程，包含数据和两个线程
+process control
+	features
+		command_data : out data port;
+		sensor_data : in data port;
+		set_speed : in data port;
+		disengage : in event port;
+		status : out data port;
+		control_on:in event port;
+	flows
+		on_flow_path: flow path set_speed -> command_data {latency => 10ms..20ms;};
+	properties
+		Period => 50ms;
+end control;
+
+process  implementation control.speed
+	subcomponents
+		scale_speed_data : thread PBASpeedControl::read_data.speed in modes(controlling);
+		speed_control_laws : thread PBASpeedControl::control_laws.speed in modes(controlling);
+		monitor : thread monitor_unit in modes(monitoring);
+	connections
+		DC1 : port sensor_data ->scale_speed_data.sensor_data in modes(controlling);
+		DC2 : port scale_speed_data.proc_data -> speed_control_laws.proc_data in modes(controlling);
+		DC3 : port speed_control_laws.cmd -> command_data in modes(controlling);
+		EC1 : port disengage -> speed_control_laws.disengage in modes(controlling);
+		EC2 : port control_on -> speed_control_laws.control_on in modes(controlling);
+		DC4 : port set_speed -> speed_control_laws.set_speed in modes(controlling);
+		DC5 : port monitor.status -> status in modes(monitoring);
+		DC6 : port sensor_data -> monitor.sensor_data  in modes(monitoring);
+		DC8 : port speed_control_laws.status -> status  in modes(controlling);
+	modes
+	    monitoring : initial mode;
+	    controlling : mode;
+	    monitoring -[ control_on ]-> controlling;
+	    controlling -[disengage]-> monitoring;
+	 properties
+	    Source_language => (C);
+	    Source_Text => ("ControlLaws.cc","ControlLows.obj") applies to speed_control_laws;
+	    Source_Text => ("ScaleData.cc","ScaleData.obj") applies to scale_speed_data;
+	    Source_Code_Size => 4 KByte applies to scale_speed_data; 
+	    Source_Code_Size => 10 KByte applies to speed_control_laws; 
+	    
+end control.speed;
+
+--调节阀
+device actuator
+	features
+		cmd : in data port;
+		BA1:requires bus access PBAHardware::Marine.Standard;
+	flows
+		on_flow_snk: flow sink cmd{latency => 8ms..8ms;};
+end actuator;
+
+device implementation actuator.speed
+end actuator.speed;
+
+
+end PBAComponents;

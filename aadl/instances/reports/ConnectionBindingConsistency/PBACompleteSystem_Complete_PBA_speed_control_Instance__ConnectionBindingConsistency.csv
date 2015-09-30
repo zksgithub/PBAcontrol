@@ -1,0 +1,29 @@
+Check connection binding consistency Report
+
+Warning: Connection speed_control.scale_speed_data.proc_data -> speed_control_laws.proc_data source or destination is not bound to hardware
+Warning: Connection speed_control.scale_speed_data.proc_data -> speed_control_laws.proc_data has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_control.scale_speed_data.proc_data -> speed_control_laws.proc_data source and destination are not physically connected"
+Warning: Connection speed_sensor.sensor_data -> speed_control.scale_speed_data.sensor_data source or destination is not bound to hardware
+Warning: Connection speed_sensor.sensor_data -> speed_control.scale_speed_data.sensor_data has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_sensor.sensor_data -> speed_control.scale_speed_data.sensor_data source and destination are not physically connected"
+Warning: Connection speed_sensor.sensor_data -> speed_control.monitor.sensor_data source or destination is not bound to hardware
+Warning: Connection speed_sensor.sensor_data -> speed_control.monitor.sensor_data has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_sensor.sensor_data -> speed_control.monitor.sensor_data source and destination are not physically connected"
+Warning: Connection interface_unit.set_speed -> speed_control.speed_control_laws.set_speed source or destination is not bound to hardware
+Warning: Connection interface_unit.set_speed -> speed_control.speed_control_laws.set_speed has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection interface_unit.set_speed -> speed_control.speed_control_laws.set_speed source and destination are not physically connected"
+Warning: Connection interface_unit.disengage -> speed_control.speed_control_laws.disengage source or destination is not bound to hardware
+Warning: Connection interface_unit.disengage -> speed_control.speed_control_laws.disengage has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection interface_unit.disengage -> speed_control.speed_control_laws.disengage source and destination are not physically connected"
+Warning: Connection interface_unit.control_on -> speed_control.speed_control_laws.control_on source or destination is not bound to hardware
+Warning: Connection interface_unit.control_on -> speed_control.speed_control_laws.control_on has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection interface_unit.control_on -> speed_control.speed_control_laws.control_on source and destination are not physically connected"
+Warning: Connection speed_control.speed_control_laws.cmd -> throttle.cmd source or destination is not bound to hardware
+Warning: Connection speed_control.speed_control_laws.cmd -> throttle.cmd has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_control.speed_control_laws.cmd -> throttle.cmd source and destination are not physically connected"
+Warning: Connection speed_control.speed_control_laws.status -> display_unit.status source or destination is not bound to hardware
+Warning: Connection speed_control.speed_control_laws.status -> display_unit.status has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_control.speed_control_laws.status -> display_unit.status source and destination are not physically connected"
+Warning: Connection speed_control.monitor.status -> display_unit.status source or destination is not bound to hardware
+Warning: Connection speed_control.monitor.status -> display_unit.status has no actual connection binding to hardware
+"ERROR: Hardware (processor or device) of connection speed_control.monitor.status -> display_unit.status source and destination are not physically connected"

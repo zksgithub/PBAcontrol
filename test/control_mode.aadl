@@ -1,0 +1,35 @@
+package test
+
+public
+
+thread control_mode
+	features
+		cc_engage : in event port;
+		cc_resume : in event port;
+		cc_brake : in event port;
+	modes
+		idle : initial mode;
+		controlling : mode;
+		idle -[cc_engage,cc_brake]-> controlling;
+		controlling -[ cc_brake]-> idle;
+	end control_mode;
+
+
+process control
+end control;
+
+process implementation control.test
+subcomponents
+    t :  thread control_mode;
+end control.test;
+
+
+system test
+end test;
+
+system implementation test.t
+subcomponents
+   t2: process control.test;
+ end test.t;
+
+end test;

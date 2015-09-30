@@ -1,0 +1,44 @@
+--控制器软件细化
+package PBASpeedControl
+
+public with PBAComponents;
+
+--读取数据线程
+thread read_data
+	features 
+		sensor_data :in data port;
+		proc_data : out data port;
+	properties
+		Dispatch_Protocol => Periodic;
+		Compute_Execution_Time => 3 ms .. 5 ms;
+		Period => 50ms;
+end read_data;
+
+thread implementation read_data.speed
+end read_data.speed;
+
+--计算控制率线程
+thread Control_laws
+	features
+		proc_data : in data port;
+		cmd : out data port;
+		disengage : in event port;
+		set_speed : in data port ;
+		control_on : in event port;
+		status : out data port;
+	flows
+		on_flow_path: flow path set_speed -> cmd {latency => 10ms..20ms;};
+	properties
+		Dispatch_Protocol => Periodic;
+		Compute_Execution_Time => 1 ms .. 2 ms;
+		Period => 50ms;
+end Control_laws;
+
+
+
+thread implementation control_laws.speed
+end control_laws.speed;
+
+
+
+end PBASpeedControl;
